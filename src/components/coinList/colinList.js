@@ -1,7 +1,13 @@
-import { useState, useEffect } from 'react';
-import axios from 'axios';
+import { useEffect } from 'react';
 import { Last7dChart, ProgressiveBar } from 'components';
 import './coinList.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { getCoins } from 'redux/coinListReducer/actions';
+import {
+	coinsSelector,
+	errorSelector,
+	loadingSelector,
+} from 'redux/coinListReducer';
 
 function kFormatter(num) {
 	if (Math.abs(num) > 999 && Math.abs(num) < 999999) {
@@ -16,25 +22,13 @@ function kFormatter(num) {
 }
 
 const ColinList = () => {
-	const [coins, setCoins] = useState([]);
-	const [isLoading, setIsLoading] = useState(false);
-	const [error, setError] = useState(false);
-	const getCoins = async () => {
-		try {
-			setIsLoading(true);
-			const { data } = await axios.get(
-				'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=1&sparkline=true&price_change_percentage=1h%2C24h%2C7d'
-			);
-			console.log(data);
-			setIsLoading(false);
-			setError(false);
-			setCoins(data);
-		} catch (err) {
-			setError(true);
-		}
-	};
+	const dispatch = useDispatch();
+	const coins = useSelector(coinsSelector);
+	const isLoading = useSelector(loadingSelector);
+	const error = useSelector(errorSelector);
 	useEffect(() => {
-		getCoins();
+		dispatch(getCoins());
+		// eslint-disable-next-line
 	}, []);
 	return (
 		<>
