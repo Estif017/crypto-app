@@ -7,6 +7,11 @@ table {
 	border-spacing: 40px 5px;
 }
 
+th:nth-child(3) {
+	display: flex;
+	align-items: center;
+}
+
 td {
 	text-align: center;
 	padding: 0 2px;
@@ -32,4 +37,13 @@ td:nth-child(8) {
 img {
 	height: 35px;
 	width: 35px;
+}
+
+.fas {
+	margin-bottom: 5px;
+	padding-right: 10px;
+}
+
+.price-desc {
+	margin-top: 10px;
 }

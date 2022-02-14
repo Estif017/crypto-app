@@ -2,11 +2,16 @@ import { useEffect } from 'react';
 import { Last7dChart, ProgressiveBar } from 'components';
 import './coinList.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { getCoins } from 'redux/coinListReducer/actions';
+import {
+	getCoins,
+	sortByPriceAsc,
+	sortByPriceDesc,
+} from 'redux/coinListReducer/actions';
 import {
 	coinsSelector,
 	errorSelector,
 	loadingSelector,
+	sortPriceAscSelector,
 } from 'redux/coinListReducer';
 
 function kFormatter(num) {
@@ -26,6 +31,7 @@ const ColinList = () => {
 	const coins = useSelector(coinsSelector);
 	const isLoading = useSelector(loadingSelector);
 	const error = useSelector(errorSelector);
+	const sortPriceAsc = useSelector(sortPriceAscSelector);
 	useEffect(() => {
 		dispatch(getCoins());
 		// eslint-disable-next-line
@@ -40,7 +46,21 @@ const ColinList = () => {
 					<tr>
 						<th>#</th>
 						<th>Name</th>
-						<th>Price</th>
+						<th>
+							<i
+								className={`fas  ${
+									sortPriceAsc
+										? 'fas fa-sort-down price-asc'
+										: 'fas fa-sort-up price-desc'
+								}`}
+								onClick={() =>
+									sortPriceAsc
+										? dispatch(sortByPriceAsc())
+										: dispatch(sortByPriceDesc())
+								}
+							/>
+							Price
+						</th>
 						<th>1h%</th>
 						<th>24h%</th>
 						<th>7d%</th>

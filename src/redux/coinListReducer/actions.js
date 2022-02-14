@@ -3,6 +3,8 @@ const {
 	FETCHING_COINS_PENDING,
 	FETCHING_COINS_SUCCESS,
 	FETCHING_COINS_FAIL,
+	SORT_BY_PRICE_ASC,
+	SORT_BY_PRICE_DESC,
 } = require('.');
 
 export const getCoins = () => async (dispatch, getState) => {
@@ -16,3 +18,6 @@ export const getCoins = () => async (dispatch, getState) => {
 		dispatch({ type: FETCHING_COINS_FAIL });
 	}
 };
+
+export const sortByPriceAsc = () => ({ type: SORT_BY_PRICE_ASC });
+export const sortByPriceDesc = () => ({ type: SORT_BY_PRICE_DESC });
