@@ -55,20 +55,18 @@ const ColinList = () => {
 	const sortPriceIn7dAsc = useSelector(sortPriceIn7dAscSelector);
 	const sortPriceIn7dDesc = useSelector(sortPriceIn7dDescSelector);
 
-	const icon = (state1, state2, action1, action2) => (
-		<i
-			className={`fas  ${
-				state1 || (state1 === false && state2 === false)
-					? 'fas fa-sort-down price-asc'
-					: 'fas fa-sort-up price-desc'
-			}`}
-			onClick={() =>
-				state1 || (state1 === false && state2 === false)
-					? dispatch(action1())
-					: dispatch(action2())
-			}
-		/>
-	);
+	const icon = (state1, state2, action1, action2) =>
+		state1 || (!state1 && !state2) ? (
+			<i
+				className='fas fa-sort-down price-asc '
+				onClick={() => dispatch(action1())}
+			/>
+		) : (
+			<i
+				className='fas fa-sort-up price-desc'
+				onClick={() => dispatch(action2())}
+			/>
+		);
 
 	useEffect(() => {
 		dispatch(getCoins());
@@ -92,7 +90,7 @@ const ColinList = () => {
 							)}
 							&#9; Price
 						</th>
-						<th className='in1hr'>
+						<th>
 							{icon(
 								sortPriceIn1hrAsc,
 								sortPriceIn1hrDesc,
