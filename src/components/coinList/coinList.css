@@ -7,12 +7,6 @@ table {
 	border-spacing: 40px 5px;
 }
 
-/* th:nth-child(3) {
-	display: flex;
-	align-items: center;
-	flex-wrap: wrap;
-} */
-
 td {
 	text-align: center;
 	padding: 0 2px;
@@ -41,14 +35,11 @@ img {
 }
 
 .fas {
-	/* margin-bottom: 5px;
-	padding-right: 10px; */
 	cursor: pointer;
 	font-size: 20px;
 	color: #fe1040;
 }
 
 .price-desc {
-	/* margin-top: 10px; */
 	color: #00fc2a;
 }
