@@ -55,16 +55,16 @@ const ColinList = () => {
 	const sortPriceIn7dAsc = useSelector(sortPriceIn7dAscSelector);
 	const sortPriceIn7dDesc = useSelector(sortPriceIn7dDescSelector);
 
-	const icon = (state1, state2, action1, action2) =>
-		state1 || (!state1 && !state2) ? (
+	const icon = (sortAsc, sortDesc, sortByAsc, sortByDesc) =>
+		sortDesc ? (
 			<i
-				className='fas fa-sort-down price-asc '
-				onClick={() => dispatch(action1())}
+				className='fas fa-sort-up price-desc'
+				onClick={() => dispatch(sortByDesc())}
 			/>
 		) : (
 			<i
-				className='fas fa-sort-up price-desc'
-				onClick={() => dispatch(action2())}
+				className='fas fa-sort-down price-asc '
+				onClick={() => dispatch(sortByAsc())}
 			/>
 		);
 
