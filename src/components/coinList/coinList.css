@@ -1,0 +1,45 @@
+table {
+	width: 1172px;
+	margin: 0 auto;
+	color: white;
+	border: #707070;
+	border-collapse: separate;
+	border-spacing: 40px 5px;
+}
+
+td {
+	text-align: center;
+	padding: 0 2px;
+	margin: 0 1000px;
+}
+
+td:nth-child(7),
+td:nth-child(8) {
+	width: 220px;
+}
+
+.value {
+	display: flex;
+	justify-content: space-between;
+}
+
+.coin-name {
+	display: flex;
+	align-items: center;
+	gap: 5px;
+}
+
+img {
+	height: 35px;
+	width: 35px;
+}
+
+.fas {
+	cursor: pointer;
+	font-size: 20px;
+	color: #fe1040;
+}
+
+.price-desc {
+	color: #00fc2a;
+}
